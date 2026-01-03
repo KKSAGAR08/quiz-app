@@ -86,7 +86,7 @@ export default function Response() {
   const handleStartQuiz = async (e) => {
     e.preventDefault();
 
-    const { data, error } = await supabase
+    const { data} = await supabase
       .from("quiz_responses")
       .select("id")
       .eq("quiz_id", quizId)
