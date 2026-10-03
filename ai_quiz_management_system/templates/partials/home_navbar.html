@@ -1,0 +1,22 @@
+{% load static %}
+
+<nav>
+  <div class="section-1">
+    <img src="{% static 'logo/logo.png' %}" alt="logo" width="29" height="29" />
+    <span>AI Quiz</span>
+  </div>
+
+  <div class="section-2">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#features-box">Features</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <a href="{% url 'login' %}">
+      <button>Login</button>
+    </a>
+    <a href="{% url 'register' %}">
+      <button>Sign Up</button>
+    </a>
+  </div>
+</nav>

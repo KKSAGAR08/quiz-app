@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} Dashbaord - AI Quiz {% endblock title %} 
+
+{% block extracss %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+{% endblock extracss %} 
+
+{% block content %} 
+{% include 'partials/navbar1.html' %}
+
+<main class="main-box">
+  <main class="question-box">
+    <div class="qbox-section1">
+      <h1>Welcome, {{ request.user }}!</h1>
+      <p>Manage and track your quizzes easily</p>
+    </div>
+    <div class="qbox-section2">
+      <button><a style="text-decoration: none; color: white;" href="{% url 'generate_quiz' %}">Generate New Quiz</a></button>
+    </div>
+  </main>
+
+  {% if message %}
+  <div class="no-quiz-message">
+    <img src="{% static 'images/no_quiz_logo.png' %}" alt="no-logo">
+    <h1 style="font-size: 30px;">{{ message }}</h1>
+    <div class="no-display-text">
+        <p>You haven't created any quizzes yet.</p>
+        <p>Click the button above to generate your first quiz.</p>
+    </div>
+    <button><a style="text-decoration: none; color: white;" href="{% url 'generate_quiz' %}">Generate New Quiz</a></button>
+  </div>
+  {% else %}
+
+  <main class="recent-quiz">
+    <h3>Recent Quizzes</h3>
+    <table class="quizzes-container">
+      <tr>
+        <th>Quiz Title</th>
+        <th>Subject</th>
+        <th>Questions</th>
+        <th>Created On</th>
+        <th>Copy</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+
+      {% for quiz in quiz_list %}
+      <tr class="quiz">
+        <td>{{ quiz.topic }} Quiz</td>
+        <td>{{ quiz.subject }}</td>
+        <td>{{ quiz.question_count }}</td>
+        <td>{{ quiz.created_at }}</td>
+        <td>Copy</td>
+        <td>
+          {% if quiz.is_active %}
+          <span class="status">Active</span>
+          {% else %}
+          <span class="status">InActive</span>
+          {% endif %}
+        </td>
+        <td>
+          <div class="actions">
+            <button>View Details</button>
+            <button>Deactivate</button>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+
+    </table>
+  </main>
+
+  {% endif %}
+</main>
+
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Quiz App
+{% endblock title %}  
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock extracss %}
+
+
+
+
+{% block content %} 
+
+    {% include "partials/home_navbar.html" %} 
+
+    <section class="primary-box">
+      <div class="section-box-1">
+        <div class="title">
+          <h1 style="color: rgb(10, 25, 60)">AI Quiz</h1>
+          <h1 style="color: rgb(4, 90, 232)">Management System</h1>
+        </div>
+
+        <div class="discription" style="color: rgb(112, 120, 141)">
+          <p>Generate high-quality quizzes in minutes using Al.</p>
+          <p>Create, manage and analyze quizzes from one</p>
+          <p>simple platform.</p>
+        </div>
+
+        <div class="button-section">
+          <a href="{% url 'register' %}">
+            <button>
+              <img width="25" height="20" src="{% static 'images/thunder.png' %}" alt="thunder-image" />
+              Generate Quiz in 5 Minutes
+            </button>
+          </a>
+          <a href="{% url 'login' %}">
+            <button>Login</button>
+          </a>
+        </div>
+      </div>
+
+      <div class="section-box-2">
+        <img width="470" height="370" src=" {% static 'images/front-photo.png' %} " alt="main-image" />
+      </div>
+    </section>
+
+    <section id="features-box" class="features-box">
+      <div class="container">
+        <div class="box box-1">
+          <img width="65" height="65" src=" {% static 'images/feature-1.png' %}  " alt="feature-image-1" />
+          <div>
+            <h2>Al Generated Questions</h2>
+            <p>
+              Generate questions automatically based on subject, grade and
+              difficulty.
+            </p>
+          </div>
+        </div>
+
+        <div class="box box-2">
+            <img width="65" height="65" src=" {% static 'images/feature-2.png' %} " alt="feature-image-2" />
+            <div>
+
+                <h2>Create in Minutes</h2>
+                <p>Provide a few details and let Al create the complete quiz.</p>
+            </div>
+        </div>
+
+        <div class="box box-3">
+            <img width="65" height="65" src=" {% static 'images/feature-3.png' %} " alt="feature-image-3" />
+            <div>
+
+                <h2>Live Results</h2>
+                <p>Track student performance and view quiz results in real-time.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}

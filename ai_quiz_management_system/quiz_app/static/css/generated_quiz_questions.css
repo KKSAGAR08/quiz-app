@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.main-box{
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+
+.question-box {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.qbox-section1{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.qbox-section1 h1{
+    font-size: 20px;
+    font-weight: 600;
+}
+.qbox-section1 ul{
+    font-size: 13px;
+    display: flex;
+    gap: 15px;
+    list-style-type: none;
+    padding: 0;
+    color: rgb(95,104,127)
+}
+
+.qbox-section2{
+    display: flex;
+    gap: 15px;
+}
+.qbox-section2 button{
+    padding: 10px 40px;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.qbox-section2 button:nth-child(2){
+    background-color: rgb(8, 87, 226);
+    color: white;
+}
+
+
+.questions-container{
+    flex: 1;
+    overflow-y: auto;
+}
+
+.questions-container::-webkit-scrollbar {
+  display: none;
+}
+
+.q-cards{
+    height: 200px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.question{
+    font-weight: 600;
+}
+
+.options{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.options span{
+    border: 1px solid black;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+.options span:has(input:checked) {
+    background-color: lightgreen;
+}
+
+.answer{
+    color: rgb(6, 76, 196);
+    font-weight: 600;
+}
+
+.footer-btn{
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 15px;
+    flex-shrink: 0;
+    /* border-top: 1px solid black; */
+}
+
+.footer-btn button{
+    padding: 10px 60px;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: 600;
+}
+.footer-btn button:nth-child(2){
+     background-color: rgb(8, 87, 226);
+    color: white;
+}
+

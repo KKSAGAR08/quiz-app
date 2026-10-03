@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    
+}
+
+body::-webkit-scrollbar{
+    display: none;
+    
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 10px 40px;
+    background-color: rgb(255,254,254);
+    border-bottom: 1px solid rgb(188, 188, 188);
+}
+
+.section-1{
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(9,16,41);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.section-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    color: rgb(16,22,52);
+    font-size: 15px;
+    /* font-weight: 500; */
+}
+.section-2 ul{
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+.section-2 ul li a{
+    text-decoration: none;
+    color: rgb(16,22,52);
+    font-weight: 600;
+}
+
+.section-2 button{
+    padding: 12px 27px;
+    border-radius: 8px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+/* .section-2 a{
+    background-color: white;
+    border: 1px solid rgb(148, 148, 148);
+} */
+
+.section-2 a:nth-child(2) button{
+    background-color: white;
+    border: 1px solid rgb(148, 148, 148);
+}
+
+.section-2 a:nth-child(3)  button{
+    background-color: rgb(8,87,226);
+    color: white;
+}
+
+.primary-box{
+    height: calc(80vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 10px 40px;
+    /* border-bottom: 1px solid rgb(112, 120, 141); */
+}
+
+.primary-box .section-box-1{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-box-1 .title{
+    font-size: 25px;
+}
+
+.section-box-1 .discription{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 16px;
+}
+
+.section-box-1 .button-section{
+    margin-top: 15px;
+    display: flex;
+    flex-direction:row;
+    gap: 25px;
+}
+.section-box-1 .button-section a{
+    text-decoration: none;
+}
+
+.section-box-1 .button-section button{
+    padding: 20px 40px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+.section-box-1 .button-section a:nth-child(1) button{
+    background-color: rgb(6,86,226);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    
+}
+
+.section-box-1 .button-section a:nth-child(2) button{
+    background-color: white;
+    border: rgb(148, 148, 148) 1px solid; 
+}
+
+.features-box{
+    background-color: rgb(251, 251, 251)
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 80%;
+    margin: auto;
+    height: 330px;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 350px;
+    height: 75%;;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px rgb(189, 189, 189);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.box h2 {
+    font-size: 20px;
+    margin: 0 0 7px 0;
+}
+
+.box p {
+    color: rgb(112, 120, 141);
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 240px;
+    margin: 0;
+}

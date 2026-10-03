@@ -1,0 +1,95 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %} Generate-Quiz - AI Quiz {% endblock title %}
+
+{% block extracss %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'css/generate_quiz.css' %}" />
+{% endblock extracss %} 
+
+{% block content %} 
+
+{% include 'partials/navbar1.html' %} 
+
+
+
+<main class="main-box">
+  <main class="question-box">
+    <div class="qbox-section1">
+      <h1>Generate New Quiz</h1>
+      <p>Provide the details below and let AI generate your quiz</p>
+    </div>
+  </main>
+
+  <main class="generate-quiz">
+    <form method="post">
+
+      {% csrf_token %}
+      
+      <div class="form-box">
+        <div class="generate-field-1">
+          <div class="field subject-field">
+            <label for="subject">Subject</label>
+            <input type="text" placeholder="ex. Mathematics" id="subject" name="subject" />
+          </div>
+          <div class="field grade-field">
+            <label for="grade">Grade/Level</label>
+            <input type="number" placeholder="ex. 10" id="grade" name="grade" />
+          </div>
+          <div class="field topic-field">
+            <label for="topic">Topic</label>
+            <textarea
+              name="topic"
+              id="topic"
+              placeholder="ex. Algebra, Linear Equation, Quadratic Equation"
+              rows="2"
+            ></textarea>
+          </div>
+          <div class="field file-field">
+            <label for="">Reference Material (Optional)</label>
+            <input type="file" placeholder="ex. Mathematics" />
+          </div>
+        </div>
+
+        <div class="generate-field-2">
+          <div class="field qustionNo-field">
+            <label for="questions">Number of Questions</label>
+            <input type="number" placeholder="ex. Min-1, Max-50" name="questions" id="questions" />
+          </div>
+
+          <div class="field difficulty-field">
+            <label>Difficulty Level</label>
+            <div class="radio-btn">
+              <label class="radio-option">
+                <input type="radio" name="diff" value="Easy" checked />Easy
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="diff" value="Medium" />Medium
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="diff" value="Hard" />Hard
+              </label>
+            </div>
+          </div>
+
+          <div class="field helper">
+            <h2>How it Works</h2>
+            <p>
+              Our Al will analyze your input and generate relevant, high-quality
+              questions with options and correct answers.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="submit-btn">
+        <button type="submit" >Generate Quiz with AI</button>
+      </div>
+    </form>
+  </main>
+</main>
+
+{% endblock content %}

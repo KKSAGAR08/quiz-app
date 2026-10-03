@@ -1,0 +1,90 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %} Generate-Quiz - AI Quiz {% endblock title %}
+
+{% block extracss %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'css/generated_quiz_questions.css' %}" />
+{% endblock extracss %} 
+
+{% block content %} 
+
+{% include 'partials/navbar1.html' %} 
+
+    <main class="main-box">
+      <main class="question-box">
+        <div class="qbox-section1">
+          <h1>Generated Quiz</h1>
+          <ul>
+            <li>Subject: {{ subject }}</li>
+            <li>Grade: {{ grade }}</li>
+            <li>Question: {{ topic }}</li>
+            <li>Difficulty: {{ difficulty }}</li>
+          </ul>
+        </div>
+
+        <form method="post" action="{% url 'generated_quiz' %}" >
+          
+          {% csrf_token %}
+
+        <div class="qbox-section2">
+          <button><a style="text-decoration: none; color: black;" href="{% url 'dashboard'  %}">Back to Dashboard</a></button>
+          <button type="submit" >Save Quiz</button>
+        </div>
+      </main>
+
+      <section class="questions-container">
+        {% for questions in questions_list %}
+        <div class="q-cards">
+          <div class="question">
+            <p>{{ questions.question }}</p>
+          </div>
+
+          <div class="options">
+            <span for="">
+              <input
+                type="radio"
+                name="{{ questions.question_no }}"
+                value="{{ questions.options.0 }}"
+                disabled
+                {% if questions.answer == questions.options.0  %} checked {% endif %}
+              />{{ questions.options.0 }}
+            </span>
+            <span>
+              <input type="radio" name="{{ questions.question_no }}" value="{{ questions.options.1 }}" disabled
+              {% if questions.answer == questions.options.1  %} checked {% endif %}
+              />{{ questions.options.1 }}
+            </span>
+            <span>
+              <input type="radio" name="{{ questions.question_no }}" value="{{ questions.options.2 }}" disabled 
+              {% if questions.answer == questions.options.2  %} checked {% endif %}
+              />{{ questions.options.2 }}
+            </span>
+            <span>
+              <input type="radio" name="{{ questions.question_no }}" value="{{ questions.options.3 }}" disabled 
+              {% if questions.answer == questions.options.3  %} checked {% endif %}
+              
+              />{{ questions.options.3 }}
+            </span>
+          </div>
+          <div class="answer">
+            <p>Correct Answer: {{ questions.answer }}</p>
+          </div>
+        </div>
+
+        {% endfor %}
+      </section>
+      </form>
+
+      <section class="footer-btn">
+        <button><a style="text-decoration: none; color: black;" href="{% url 'generate_quiz'  %}">Generate Again</a></button>
+        <button>Download Quiz</button>
+      </section>
+    </main>
+
+
+    {% endblock content %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %}
+Sign Up - AI Quiz
+{% endblock title %}
+
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock extracss %}
+
+
+
+{% block content %}
+
+  <div class="page">
+    <div class="navbar">
+      <img src="{% static 'logo/logo.png' %}" alt="logo" width="29" height="29" />
+      <div class="logo-text">AI Quiz</div>
+    </div>
+    <div class="content">
+      <div class="card">
+        <h1>Create your account</h1>
+        <div class="subtitle">Start creating AI-powered quizzes</div>
+
+        <form method="post">
+
+          {% csrf_token %}
+
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input type="text" placeholder="Enter your full name" name="name" id="name">
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" placeholder="you@example.com" name="email" id="email">
+        </div>
+
+        <div class="field">
+          <label for="pwd">Password</label>
+          <input type="password" placeholder="••••••••••" name="pwd" id="pwd">
+        </div>
+
+        <div class="field">
+          <label for="cnfpwd">Confirm Password</label>
+          <input type="password" placeholder="••••••••••" name="cnfpwd" id="cnfpwd">
+        </div>
+    
+
+        {% if message %}
+            <div>
+              <p style="text-align: center; color: red;">- {{ message }} -</p>
+            </div>
+        {% endif %}
+
+        <button class="btn-primary">Sign Up</button>
+
+        </form>
+
+        <div class="switch-row">Already have an account? <a class="link" href="{% url 'login' %}">Login</a></div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
+

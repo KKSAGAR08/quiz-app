@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.main-box {
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 50px;
+}
+
+.question-box {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.qbox-section1 {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.qbox-section1 h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.qbox-section1 p {
+  font-size: 13px;
+  color: rgb(95, 104, 127);
+}
+
+.qbox-section2 {
+  display: flex;
+  gap: 15px;
+}
+
+.generate-quiz {
+  border: 1px solid black;
+  border-radius: 6px;
+  flex: 1;
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.generate-quiz form {
+  height: 100%;
+  display: flex;  
+  flex-direction: column;
+  gap: 45px;
+}
+
+.form-box{
+    height: 83%;
+    display: flex;
+    gap: 40px;
+}
+
+.generate-field-1,.generate-field-2 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.field label {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+}
+
+.field input,
+textarea {
+  font-family: "Inter", sans-serif;
+  color: black;
+  padding: 13px 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(171, 173, 174);
+}
+.field input::placeholder,
+textarea::placeholder {
+  color: rgb(136, 145, 160);
+  font-weight: 600;
+}
+
+.helper {
+  padding: 15px 20px;
+  border-radius: 7px;
+  background-color: rgb(240, 245, 254);
+  height: 110px;
+}
+.helper h2 {
+  font-size: 17px;
+  font-weight: 600;
+  color: rgb(77, 134, 248);
+}
+.helper p {
+  font-size: 14px;
+  color: rgb(95, 104, 127);
+  font-weight: 500;
+}
+
+.radio-btn {
+  display: flex;
+  gap: 12px;
+}
+
+.radio-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 25px 16px;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.radio-option:has(input:checked) {
+  border: 1px solid #2563eb;
+  background-color: #f5f8ff;
+}
+
+.submit-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn button{
+    width: 70%;
+    padding: 13px;
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(2,84,236);
+    cursor: pointer;
+}
