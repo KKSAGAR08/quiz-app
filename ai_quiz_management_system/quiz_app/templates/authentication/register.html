@@ -56,8 +56,12 @@ Sign Up - AI Quiz
         {% endif %}
 
         <button class="btn-primary">Sign Up</button>
+        
 
         </form>
+        <a href="{% url 'home_page' %}">
+            <button class="btn">Back To Home Page</button>
+        </a>
 
         <div class="switch-row">Already have an account? <a class="link" href="{% url 'login' %}">Login</a></div>
       </div>

@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -7,6 +8,7 @@ import os
 from .config.service import get_questions_on_prompt
 import json
 from pprint import pprint
+from datetime import datetime
 
 def login_view(request):
 
@@ -81,6 +83,36 @@ def dashboard_view(request):
     return render(request,'dashboard.html',context=context)
 
 @login_required(login_url='login')
+def get_quiz_details_view(request,quiz_id):
+
+    try:
+        quiz_details = Quiz.objects.get(id=quiz_id,userId=request.user)
+    except Quiz.DoesNotExist:
+        return HttpResponse("Quiz with this id did not found")
+
+    student_result = StudentResult.objects.filter(quizId=quiz_details)
+
+    sorted_student_result = list()
+
+    for std in student_result:
+        sorted_student_result.append({
+            'std_name':std.stdId.name,
+            'time_taken': datetime.combine(datetime.min, std.completeTime) - datetime.combine(datetime.min, std.startTime), 
+            'score':(std.correct_answer/std.total_question)*100
+        })
+
+    sorted_student_result.sort( key=lambda x: (-x['score'], x['time_taken']) )
+
+    print(sorted_student_result)
+    
+    context = {
+        'quiz_details':quiz_details,
+        'student_details':sorted_student_result
+    }
+    return render(request,'quiz_leaderboard.html',context=context)
+
+
+@login_required(login_url='login')
 def logout_view(request):
     logout(request)
     return redirect('login')
@@ -116,6 +148,7 @@ def generate_quiz_view(request):
     
     return render(request,'generate_quiz.html')
 
+@login_required(login_url='login')
 def generated_question_view(request):
 
     if request.method == 'POST':
@@ -137,3 +170,18 @@ def generated_question_view(request):
         return redirect('generate_quiz')
         
     return redirect('generate_quiz')
+
+
+@login_required(login_url='login')
+def deactive_quiz_view(request,quiz_id):
+    try:
+        quiz_details = Quiz.objects.get(id=quiz_id)
+    except Quiz.DoesNotExist:
+        return HttpResponse("Invalid Action")
+
+    quiz_details.is_active = not quiz_details.is_active
+    quiz_details.save()
+
+    return redirect('dashboard')
+
+    

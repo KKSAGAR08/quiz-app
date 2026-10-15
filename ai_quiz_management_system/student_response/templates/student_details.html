@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+ {% load static %} 
+ 
+ {% block title %} Student-Details {% endblock title %} 
+ 
+{% block extracss %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'css/student_details.css' %}" />
+{% endblock extracss %} 
+
+{% block content %} 
+
+{% include 'partials/response_navbar.html' %}
+<main class="main">
+  <section class="student-card">
+    <div class="avatar">👤</div>
+    <h1>Student Details</h1>
+    <p class="subtitle">Please enter your details to start the quiz.</p>
+    <form method="post" action='{% url "std_details" quiz_id  %}'>
+        {% csrf_token %}
+      <label for="name">Full Name *</label
+      ><input
+        id="name"
+        name="name"
+        type="text"
+        required
+        placeholder="your name"
+      />
+      <label for="grade">Standard / Grade *</label>
+      <input type="number" name="grade" required placeholder="10" />
+      <label for="dob">Date of Birth *</label
+      ><input id="dob" name="dob" type="date" required />
+      {% if error %}
+      <span style="margin: 5px auto; color: red;">{{ error }}</span>
+      {% endif %}
+      <button class="primary" type="submit">Start Quiz <span>→</span></button>
+    </form>
+  </section>
+</main>
+
+{% endblock content %}

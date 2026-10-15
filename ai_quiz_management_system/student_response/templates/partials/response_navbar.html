@@ -1,0 +1,77 @@
+{% load static %}
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 10px 40px;
+    background-color: rgb(255, 254, 254);
+    border-bottom: 1px solid rgb(188, 188, 188);
+  }
+
+  .section-1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(9, 16, 41);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: rgb(16, 22, 52);
+    font-size: 17px;
+  }
+
+  .name-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .name-box .name-logo {
+    background-color: rgb(2, 73, 201);
+    padding: 10px;
+    color: rgb(193, 213, 241);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 600;
+    border: none;
+    font-size: 15px;
+    height: 38px;
+    width: 38px;
+  }
+
+  .section-2 button {
+    padding: 10px;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    display: flex;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  .section-2 button img {
+    width: 18px;
+    height: 18px;
+  }
+</style>
+
+<nav>
+  <div class="section-1">
+    <img src='{% static "logo/logo.png" %}' alt="logo" width="29" height="29" />
+    <span>AI Quiz</span>
+  </div>
+</nav>

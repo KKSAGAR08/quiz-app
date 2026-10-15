@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.main {
+  min-height: calc(100vh - 80px);
+  padding: 17px;
+  border: 1px solid #e5ecf7;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+}
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0860f5;
+  color: #fff;
+  border: 1px solid #0860f5;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.primary:hover {
+  background: #0052db;
+}
+
+.question-card {
+  width: 90%;
+  padding: 20px 40px;
+  border: 1px solid #edf1f8;
+  border-radius: 11px;
+  background: #fff;
+  margin: 10px auto;
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.heading h2 {
+  margin-bottom: 7px;
+  letter-spacing: -0.1px;
+}
+.heading p {
+  margin: 0;
+  color: #34466f;
+  font-size: 15px;
+}
+.difficulty {
+  color: #07834b;
+  background: #e8f9f0;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 15px;
+}
+.question-number {
+  border: 1px solid rgb(231, 6, 6);
+  padding: 5px 15px;
+  width: fit-content;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: rgb(231, 6, 6);
+  color: white;
+  font-weight: bold;
+}
+.question {
+  font-size: 18px;
+  line-height: 1.45;
+  margin: 10px 0px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.answer {
+  min-height: 41px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 13px;
+  border: 1px solid #d3deef;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.answer input {
+  position: absolute;
+  opacity: 0;
+}
+.radio {
+  height: 18px;
+  width: 18px;
+  flex: 0 0 18px;
+  border: 2px solid #8293b4;
+  border-radius: 50%;
+  background: white;
+  position: relative;
+}
+input:checked + .radio {
+  border-color: #0862f5;
+}
+
+.answer:has(input:checked){
+  border-color: #8bb4ff;
+  background: #e5efff;
+}
+
+.answer input:checked + .radio:after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #0862f5;
+}
+.buttons {
+  width: 20%;
+  padding: 10px 20px;
+  margin: 20px auto;
+}

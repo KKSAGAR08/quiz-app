@@ -1,0 +1,69 @@
+{% extends 'base.html' %} 
+
+{% load static %} 
+
+{% block title %} Quiz-Details {% endblock title %} 
+
+{% block extracss %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'css/quiz_details.css' %}" />
+{% endblock extracss %} 
+
+{% block content %} 
+
+{% include 'partials/response_navbar.html' %}
+
+<main class="main">
+  <section class="quiz-card">
+    <div class="quiz-intro">
+      <div class="book-icon">📗</div>
+      <div>
+        <h1>{{ quiz_details.topic }} Quiz</h1>
+        <p>
+          Test your understanding of basic {{ quiz_details.topic }} concepts<br
+            class="desktop"
+          />
+          including Multiple Choice Questions
+        </p>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="grid">
+      <div class="tile">
+        <span class="icon blue">♧</span>
+        <div><small>Subject</small><strong>{{ quiz_details.subject }}</strong></div>
+      </div>
+      <div class="tile">
+        <span class="icon purple">◇</span>
+        <div><small>Topic</small><strong>{{ quiz_details.topic }}</strong></div>
+      </div>
+      <div class="tile">
+        <span class="icon yellow">♧</span>
+        <div><small>Grade</small><strong>{{ quiz_details.grade }}</strong></div>
+      </div>
+      <div class="tile">
+        <span class="icon green">▥</span>
+        <div>
+          <small>Difficulty</small><strong><em>{{ quiz_details.level }}</em></strong>
+        </div>
+      </div>
+      <div class="tile">
+        <span class="icon blue">▤</span>
+        <div><small>Total Questions</small><strong>{{ quiz_details.question_count }}</strong></div>
+      </div>
+      <div class="tile">
+        <span class="icon pink">◷</span>
+        <div><small>Estimated Time</small><strong>{{ quiz_details.question_count }} minutes</strong></div>
+      </div>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+    <button class="primary start" type="submit">Start Quiz <span>→</span></button>
+    </form>
+  </section>
+</main>
+
+{% endblock content %}

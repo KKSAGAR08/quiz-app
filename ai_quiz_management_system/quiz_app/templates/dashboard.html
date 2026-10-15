@@ -56,18 +56,31 @@
         <td>{{ quiz.subject }}</td>
         <td>{{ quiz.question_count }}</td>
         <td>{{ quiz.created_at }}</td>
-        <td>Copy</td>
+        <td class="copy-img"><button onclick="copy_to_clipboard('{{ quiz.id }}')" 
+          {% if not quiz.is_active %}
+            disabled
+           {% endif %}>
+          <img src='{% static "img/copy.png" %}' width="20" height="20">
+        </button></td>
         <td>
           {% if quiz.is_active %}
           <span class="status">Active</span>
           {% else %}
-          <span class="status">InActive</span>
+          <span class="status inactive">De-  Activated</span>
           {% endif %}
         </td>
         <td>
           <div class="actions">
+            <a href="{% url 'quiz_leaderboard' quiz.id %}">
             <button>View Details</button>
-            <button>Deactivate</button>
+            </a>
+            <a  href="{% url 'change_quiz_status' quiz.id %}">
+                {% if quiz.is_active %}
+                  <button>Deactivate</button>
+                {% else %}
+                  <button>Activate</button>
+                {% endif %}
+            </a>
           </div>
         </td>
       </tr>
@@ -78,5 +91,16 @@
 
   {% endif %}
 </main>
+
+<script>
+  async function copy_to_clipboard(quiz_id){
+    try{
+      await navigator.clipboard.writeText(`http://127.0.0.1:8000/app/v1/student/response/quiz/${quiz_id}/`)
+      alert('Url Copied Now You Can Share it to Students')
+    }catch(e){
+      console.log(e)
+    }
+  }
+</script>
 
 {% endblock content %}

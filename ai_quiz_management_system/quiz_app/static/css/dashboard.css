@@ -11,7 +11,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-
 /* dashboard */
 .main-box {
   height: calc(100vh - 80px);
@@ -141,12 +140,12 @@ body::-webkit-scrollbar {
   font-weight: 600;
 }
 
-.actions button:nth-child(1) {
+.actions a:first-child button {
   border: 1px solid rgb(8, 87, 226);
   color: rgb(8, 87, 226);
 }
 
-.actions button:nth-child(2) {
+.actions a:nth-child(2) button {
   border: 1px solid rgb(236, 79, 86);
   color: rgb(236, 79, 86);
 }
@@ -164,4 +163,14 @@ body::-webkit-scrollbar {
 .inactive {
   border: 1px solid rgb(236, 79, 86);
   color: rgb(236, 79, 86);
+}
+.copy-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.copy-img button {
+  border: none;
+  cursor: pointer;
+  background-color: white;
 }

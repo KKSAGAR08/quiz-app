@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.main {
+  min-height: calc(100vh - 96px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17px;
+  border: 1px solid #e5ecf7;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+}
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #0860f5;
+  color: #fff;
+  border: 1px solid #0860f5;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.primary:hover {
+  background: #0052db;
+}
+
+
+.thank-card {
+  width: min(583px, 100%);
+  min-height: 365px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 24px;
+  border: 1px solid #edf1f8;
+  border-radius: 11px;
+  background: #fff;
+  text-align: center;
+}
+.celebration {
+  width: 240px;
+  height: 96px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.check {
+  height: 84px;
+  width: 84px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #d9f7e8;
+  color: #00a85a;
+  font-size: 57px;
+  font-weight: bold;
+}
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+.c1 {
+  left: 14px;
+  top: 47px;
+  background: #0862ff;
+  transform: rotate(24deg);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.c2 {
+  left: 63px;
+  top: 15px;
+  background: #ff376d;
+  border-radius: 50%;
+}
+.c3 {
+  right: 22px;
+  top: 20px;
+  background: #00b9a7;
+  transform: rotate(30deg);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.c4 {
+  right: 11px;
+  top: 80px;
+  background: #ff376d;
+  border-radius: 50%;
+}
+.c5 {
+  left: 49px;
+  bottom: 3px;
+  background: #ffb400;
+  transform: rotate(45deg);
+}
+.c6 {
+  right: 61px;
+  bottom: 30px;
+  background: #d946ef;
+  transform: rotate(22deg);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.thank-card h1 {
+  margin: 0 0 11px;
+  font-size: 27px;
+  letter-spacing: -0.7px;
+}
+.thank-card p {
+  margin: 0;
+  color: #40517a;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.back {
+  min-width: 254px;
+  height: 46px;
+  margin-top: 31px;
+}
+

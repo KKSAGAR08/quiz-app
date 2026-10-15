@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+
+{% load static %} 
+
+{% block title %} Thank You {% endblock title %} 
+
+{% block extracss %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'css/thank_you.css' %}" />
+{% endblock extracss %} 
+
+
+{% block content %} 
+
+{% include 'partials/response_navbar.html' %}
+
+<main class="main">
+  <section class="thank-card">
+    <div class="celebration">
+      <span class="confetti c1"></span><span class="confetti c2"></span
+      ><span class="confetti c3"></span><span class="confetti c4"></span
+      ><span class="confetti c5"></span><span class="confetti c6"></span>
+      <div class="check">✓</div>
+    </div>
+    <h1>Thank You!</h1>
+    <p>
+      Quiz Unavailable<br />Contact Admin.
+    </p>
+    <button class="primary back" onclick="closeQuizTab()"> Close Tab </button>
+  </section>
+</main>
+
+{% endblock content %}

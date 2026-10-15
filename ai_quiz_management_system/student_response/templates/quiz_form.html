@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %} 
+
+{% block title %} Quiz-Form {% endblock title %} 
+
+{% block extracss %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'css/quiz_form.css' %}" />
+{% endblock extracss %}
+
+{% block content %} 
+{% include 'partials/response_navbar.html' %}
+<main class="main">
+  <section class="question-card">
+    <div class="heading">
+      <div>
+        <h2>{{ quiz_details.topic }} Quiz</h2>
+        <p>Number of Questions {{ quiz_details.question_count }}</p>
+      </div>
+      <span class="difficulty">{{ quiz_details.level }}</span>
+    </div>
+    <form action="{% url 'quiz_form' quiz_details.id %}" method="post">
+      {% csrf_token %}
+      {% for quiz in quiz_questions %}
+      <p class="question-number">Question {{ forloop.counter }}</p>
+      <p class="question">
+        {{ quiz.question }}
+      </p>
+
+      <label class="answer"
+        ><input type="radio" name="{{ quiz.question }}" value="{{ quiz.option1 }}" /><span
+          class="radio"
+        ></span
+        ><span>{{ quiz.option1 }}</span></label
+      >
+      <label class="answer"
+        ><input type="radio" name="{{ quiz.question }}" value="{{ quiz.option2 }}"/><span
+          class="radio"
+        ></span
+        ><span>{{ quiz.option2 }}</span></label
+      >
+      <label class="answer"
+        ><input type="radio" name="{{ quiz.question }}" value="{{ quiz.option3 }}" /><span
+          class="radio"
+        ></span
+        ><span>{{ quiz.option3 }}</span></label
+      >
+      <label class="answer"
+        ><input type="radio" name="{{ quiz.question }}" value="{{ quiz.option4 }}" /><span
+          class="radio"
+        ></span
+        ><span>{{ quiz.option4 }}</span></label
+      >
+
+      {% endfor %}
+
+      <button class="primary buttons" type="submit">Submit</button>
+    </form>
+  </section>
+</main>
+
+{% endblock content %}

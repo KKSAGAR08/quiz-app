@@ -43,8 +43,12 @@ Sign In - AI Quiz
               <div class="forgot-row"><a href="#">Forgot password?</a></div>
 
               <button class="btn-primary">Login</button>
+              
 
       </form>
+      <a href="{% url 'home_page' %}">
+              <button class="btn">Back To Home Page</button>
+        </a>
 
       <div class="switch-row">
         Don't have an account? <a class="link" href="{% url 'register' %}">Sign up</a>

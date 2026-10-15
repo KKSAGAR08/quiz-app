@@ -1,0 +1,132 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %} Quiz - Leaderboard {% endblock title %} 
+
+{% block extracss %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'css/quiz_leaderboard.css' %}" />
+{% endblock extracss %} 
+
+{% block content %} 
+
+{% include 'partials/navbar1.html' %}
+
+<main class="main-box">
+  <div class="back-to-dash">
+    <a href="{% url 'dashboard' %}" style="text-decoration: none;">
+    <button class="back-to-dash-btn">
+      <img src='{% static "img/arrows.png" %}' width="20" height="20" />
+      Back to Dashboard
+    </button>
+    </a>
+  </div>
+  <div class="main-section-1">
+    <div class="heading">
+      <h2>Quiz Details</h2>
+    </div>
+
+    <div class="details">
+      <div class="details-part-1">
+        <div class="boox-img">
+          <img src='{% static "img/book.png" %}' width="60" height="60" />
+        </div>
+        <div class="quiz-details">
+          <h3>{{ quiz_details.topic }}</h3>
+          <span style="color: rgb(73 86 111); font-weight: 600; font-size: 15px"
+            >Basic concepts of {{ quiz_details.topic }}</span
+          >
+          <div class="quiz-meta-details">
+            <div
+              style="color: rgb(15 66 230); background-color: rgb(239 244 254)"
+            >
+              Subject: {{ quiz_details.subject }}
+            </div>
+            <div
+              style="color: rgb(36 142 77); background-color: rgb(231 242 228)"
+            >
+              Grade: {{ quiz_details.grade }}
+            </div>
+            <div
+              style="color: rgb(90 30 212); background-color: rgb(246 241 254)"
+            >
+              Questions: {{ quiz_details.question_count }}
+            </div>
+            <div
+              style="color: rgb(114 68 11); background-color: rgb(259 242 221)"
+            >
+              Difficulty: {{ quiz_details.level }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="details-part-2">
+        <div class="response-box">
+          <div class="response-part-1">
+            <span>Created On</span>
+            <span style="color: black">{{ quiz_details.created_at }}</span>
+          </div>
+          <div class="response-part-2">
+            <span>Total Attemps</span>
+            <span style="color: black">{{ student_details|length }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard-section">
+      <!-- Section Heading -->
+      <div class="leaderboard-heading">
+        <div class="trophy-icon">🏆</div>
+
+        <div class="leaderboard-title">
+          <h2>Leaderboard</h2>
+          <p>Top scores in this quiz</p>
+        </div>
+      </div>
+
+      {% if not student_details %}
+      <div style="height: 50px; display: flex; justify-content: center; align-items: center;">
+          <h1>No Response Yet</h1>
+      </div>
+      {% else %}
+      <!-- Leaderboard Table Container -->
+      <div class="leaderboard-container">
+        <div class="leaderboard-table-wrapper">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Student Name</th>
+                <th>Score</th>
+                <th>Time Taken</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for std in student_details %}
+              <tr>
+                <td><span class="medal gold">{{ forloop.counter }}</span></td>
+                <td class="student-name">{{ std.std_name }}</td>
+                <td class="score">{{ std.score }}</td>
+                <td>{{ std.time_taken }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+    </section>
+  </div>
+</main>
+
+{% endblock content %}
