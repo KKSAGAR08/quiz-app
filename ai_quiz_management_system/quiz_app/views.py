@@ -10,6 +10,8 @@ import json
 from pprint import pprint
 from datetime import datetime
 
+import psutil
+
 def login_view(request):
 
     if request.user.is_authenticated:
@@ -183,5 +185,11 @@ def deactive_quiz_view(request,quiz_id):
     quiz_details.save()
 
     return redirect('dashboard')
+
+
+def ram_details_view(request):
+    process = psutil.Process(os.getpid())
+
+    print("RAM usage:", round(process.memory_info().rss / (1024 * 1024), 2), "MB")
 
     
